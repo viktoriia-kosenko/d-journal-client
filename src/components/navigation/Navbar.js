@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import LogedinLinks from "./LogedinLinks";
-import LogedOutLinks from "./LogedOutLinks";
+import LoggedInLinks from "./LoggedInLinks";
+import LoggedOutLinks from "./LoggedOutLinks";
 import { UserContext } from "../../App";
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
           D-Journal
         </Link>
 
-        {user.isLogedin ? <LogedinLinks /> : <LogedOutLinks />}
+        {user.isLoggedIn ? <LoggedInLinks /> : <LoggedOutLinks />}
       </div>
     </nav>
   );

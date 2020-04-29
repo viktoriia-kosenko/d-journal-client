@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function LogedinLinks() {
+function LoggedInLinks() {
   return (
     <ul className="right">
       <li>
@@ -16,4 +16,4 @@ function LogedinLinks() {
   );
 }
 
-export default LogedinLinks;
+export default LoggedInLinks;

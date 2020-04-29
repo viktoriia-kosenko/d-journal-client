@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function LogedOutLinks() {
+function LoggedOutLinks() {
   return (
     <ul className="right">
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/login">Log in</Link>
       </li>
       <li>
-        <Link to="signup">Signup</Link>
+        <Link to="signup">Sign up</Link>
       </li>
     </ul>
   );
 }
 
-export default LogedOutLinks;
+export default LoggedOutLinks;

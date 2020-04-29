@@ -7,7 +7,7 @@ import "./App.css";
 export const UserContext = React.createContext();
 
 const user = {
-  isLogedin: false,
+  isLoggedIn: false,
 };
 
 function App() {
