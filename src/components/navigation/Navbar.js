@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import LogedinLinks from "./LogedinLinks";
+import LogedOutLinks from "./LogedOutLinks";
+import { UserContext } from "../../App";
 
 const Navbar = () => {
+  const user = useContext(UserContext);
+
   return (
     <nav
       className="nav-wrapper blue-grey darken-1 "
@@ -14,24 +19,8 @@ const Navbar = () => {
         <Link to="/" className="brand-logo left hide-on-med-and-up">
           D-Journal
         </Link>
-        <ul className="right">
-          <li>
-            <Link to="/">Log Out</Link>
-          </li>
 
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="signup">Signup</Link>
-          </li>
-
-          <li>
-            <Link to="account" className="btn btn-floating orange lighten-1">
-              account
-            </Link>
-          </li>
-        </ul>
+        {user.isLogedin ? <LogedinLinks /> : <LogedOutLinks />}
       </div>
     </nav>
   );
