@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import LoggedInLinks from "./LoggedInLinks";
 import LoggedOutLinks from "./LoggedOutLinks";
 import { isLoggedIn } from "../helpers/isLoggedIn";
 
 const Navbar = () => {
-  console.log(isLoggedIn());
   return (
     <nav
       className="nav-wrapper blue-grey darken-1 "
