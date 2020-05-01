@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./routes";
 import Navbar from "./components/navigation/Navbar";
@@ -11,10 +11,11 @@ const user = {
 };
 
 function App() {
+  const [userInfo, setUserInfo] = useState(user);
   return (
     <BrowserRouter>
       <div className="App">
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{ userInfo, setUserInfo }}>
           <Navbar />
           <Routes />
         </UserContext.Provider>

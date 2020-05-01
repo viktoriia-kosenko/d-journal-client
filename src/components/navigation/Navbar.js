@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import LoggedInLinks from "./LoggedInLinks";
 import LoggedOutLinks from "./LoggedOutLinks";
-import { UserContext } from "../../App";
+import { isLoggedIn } from "../helpers/isLoggedIn";
 
 const Navbar = () => {
-  const user = useContext(UserContext);
-
+  console.log(isLoggedIn());
   return (
     <nav
       className="nav-wrapper blue-grey darken-1 "
@@ -20,7 +19,7 @@ const Navbar = () => {
           D-Journal
         </Link>
 
-        {user.isLoggedIn ? <LoggedInLinks /> : <LoggedOutLinks />}
+        {isLoggedIn() ? <LoggedInLinks /> : <LoggedOutLinks />}
       </div>
     </nav>
   );
