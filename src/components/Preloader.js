@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-function Preloader() {
+const Preloader = () => {
   return (
-    <div className="container z-depth-2" style={{ height: "50vh" }}>
+    <div className="container z-depth-2" style={{ height: '50vh' }}>
       <div
         className="preloader-wrapper big active"
-        style={{ marginTop: "20vh" }}
+        style={{ marginTop: '20vh' }}
       >
         <div className="spinner-layer spinner-blue">
           <div className="circle-clipper left">
@@ -21,8 +21,6 @@ function Preloader() {
       </div>
     </div>
   );
-}
+};
 
 export default Preloader;
-
-//export const Preloader = () => ()

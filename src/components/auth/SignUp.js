@@ -1,53 +1,34 @@
-import React, { useState } from "react";
-import { submitNewUser } from "../../api/status";
-import Preloader from "./Preloader";
-import { getArrayOfErrors } from "../helpers/getArrOfErrors";
-
-const checkValue = (obj) => {
-  for (let key in obj) {
-    console.log("Iam here", key, obj[key]);
-    if (obj[key].length === 0) return false;
-  }
-  return true;
-};
-
-const userSchema = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  username: "",
-};
+import React, { useState } from 'react';
+import { submitNewUser } from '../../api/user';
+import Preloader from '../Preloader';
+import { getArrayOfErrors } from '../helpers/getArrOfErrors';
+import { checkValue } from '../helpers/checkValue';
+import { userSchema } from '../helpers/userSchema';
 
 const SignUp = () => {
   const [newUser, setNewUser] = useState(userSchema);
   const [arrOfErrors, setArrOfErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const inputData = { [e.target.id]: e.target.value };
     setNewUser({ ...newUser, ...inputData });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (!checkValue(newUser)) setArrOfErrors(["All fields are required!"]);
+    if (!checkValue(newUser)) setArrOfErrors(['All fields are required!']);
     else if (newUser.password !== newUser.confirmPassword)
-      setArrOfErrors(["Password should match password confirmation!"]);
+      setArrOfErrors(['Password should match password confirmation!']);
     else {
       setIsLoading(true);
       submitNewUser(newUser)
-        .then((response) => {
-          console.log(response);
-
-          sessionStorage.setItem("AuthToken", `Bearer ${response.token}`);
-          window.location.href = "/dashboard";
-          //  return response.token;
+        .then(response => {
+          sessionStorage.setItem('AuthToken', `Bearer ${response.token}`);
+          window.location.href = '/dashboard';
         })
-        .then((res) => console.log(res))
-        .catch((err) => {
-          err.json().then((errors) => {
+        .catch(err => {
+          err.json().then(errors => {
             let receivedErrors = getArrayOfErrors(errors);
             setArrOfErrors(receivedErrors);
             setIsLoading(false);
@@ -63,7 +44,7 @@ const SignUp = () => {
       <form
         className="white"
         onSubmit={handleSubmit}
-        style={{ padding: "40px" }}
+        style={{ padding: '40px' }}
       >
         <h5 className="grey-text text-darken-3">Sign Up</h5>
 
@@ -129,8 +110,8 @@ const SignUp = () => {
 
         {arrOfErrors.length !== 0 && (
           <div className="center red-text">
-            {arrOfErrors.map((err) => (
-              <p>{err}</p>
+            {arrOfErrors.map((err, index) => (
+              <p key={index}>{err}</p>
             ))}
           </div>
         )}
